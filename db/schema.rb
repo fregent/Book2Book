@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_20_150351) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_21_103536) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -26,6 +26,28 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_20_150351) do
     t.index ["user_id"], name: "index_books_on_user_id"
   end
 
+  create_table "reservations", force: :cascade do |t|
+    t.date "duration_start"
+    t.date "duration_end"
+    t.bigint "user_id", null: false
+    t.bigint "book_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["book_id"], name: "index_reservations_on_book_id"
+    t.index ["user_id"], name: "index_reservations_on_user_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.text "content"
+    t.float "rating"
+    t.bigint "user_id", null: false
+    t.bigint "book_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["book_id"], name: "index_reviews_on_book_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -39,4 +61,8 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_20_150351) do
   end
 
   add_foreign_key "books", "users"
+  add_foreign_key "reservations", "books"
+  add_foreign_key "reservations", "users"
+  add_foreign_key "reviews", "books"
+  add_foreign_key "reviews", "users"
 end
