@@ -179,8 +179,9 @@ GEM
     net-smtp (0.4.0)
       net-protocol
     nio4r (2.6.0)
-    nokogiri (1.15.5-x86_64-linux)
+    nokogiri (1.15.5-x86_64-darwin)
       racc (~> 1.4)
+    nokogiri (1.15.5-x86_64-linux)
     orm_adapter (0.5.0)
     os (1.1.4)
     pg (1.5.4)
@@ -293,6 +294,7 @@ GEM
     zeitwerk (2.6.12)
 
 PLATFORMS
+  x86_64-darwin-23
   x86_64-linux
 
 DEPENDENCIES
