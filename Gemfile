@@ -2,6 +2,9 @@ source "https://rubygems.org"
 
 ruby "3.1.2"
 
+# The Google Auth Library for Ruby
+gem "googleauth"
+
 # An authentication gem for Rails
 gem "devise"
 
