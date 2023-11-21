@@ -1,6 +1,5 @@
 class ReviewsController < ApplicationController
-  before_action :authenticate_user!
-  
+
   def create
     @book = Book.find(params[:book_id])
     @review = Review.new(review_params)
@@ -10,12 +9,11 @@ class ReviewsController < ApplicationController
     else
       render "books/show", status: :unprocessable_entity
     end
-
   end
 
   private
 
-    def review_params
-      params.require(:review).permit(:rating, :content)
-    end
+  def review_params
+    params.require(:review).permit(:rating, :content)
+  end
 end
