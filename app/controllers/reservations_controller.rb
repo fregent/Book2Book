@@ -31,6 +31,7 @@ class ReservationsController < ApplicationController
       redirect_to book_path(@book)
     else
       render "books/show"
+    end
   end
 
   def create
