@@ -1,1 +1,6 @@
 <%= render "shared/navbar" %>
+<% if user_signed_in? %>
+  <%= render "books/index" %>
+<% else %>
+  <h2>Welcome to Book2Book!</h2>
+<% end %>
