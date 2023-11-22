@@ -24,16 +24,28 @@
           <% @reviews.each do |review| %>
 
             <div>
-              <h6>
-                Rate: <%=review.rating%>
-              </h6>
-              <p>
+                <div class="stars">
+                  <% count = 0 %>
+                    <% 5.times do %>
+                        <% if review.rating > count %>
+                            <i class="fa-solid fa-star"></i>
+                           <% else %>
+                            <i class="fa-regular fa-star"></i>
+                        <% end %>
+                      <% count += 1 %>
+                    <% end %>
+                    </div>
+                <br>
+               <p>
                 <%=review.content%>
-              </p>
-            </div>
+               </p>
+                <% if current_user == review.user %>
+                  <%= link_to "Supprimer", book_review_path(@book, review), data: { turbo_method: :delete, turbo_confirm: "Êtes-vous sûr de vouloir supprimer cette review?" }, class: "btn btn-danger" %>
+                <% end %>
+              </div>
               <br>
-             <%end%>
-        </div>
+          <%end%>
+            </div>
 
 
     </div>
@@ -58,7 +70,7 @@
         <h3>Details</h3>
         <div class="flex">
           <div class="flex">
-            Contact <%= @user_book.email %> to get this book!
+            Owner: <%= @user_book.username %>
           </div>
           <%# <div class="flex ms-3"> %>
             <h6>

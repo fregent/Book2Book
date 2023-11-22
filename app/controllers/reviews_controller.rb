@@ -17,6 +17,18 @@ class ReviewsController < ApplicationController
     end
   end
 
+    def destroy
+      @review = Review.find(params[:id])
+      @user = current_user
+      @user_destroyer = @review.user
+
+      if @user == @user_destroyer
+        @review.destroy
+        flash[:notice] = "Review supprimée avec succès."
+      end
+      redirect_to :book
+    end
+
   private
 
   def review_params
