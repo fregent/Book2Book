@@ -1,22 +1,38 @@
 <div class="cover mb-4 d-flex align-items-center justify-content-center">
-  <div class="text-center text-white">
-    <h1>Rent books</h1>
-    <h3 class="typed-js" data-controller="typed-js"></h3>
+  <div class="text-center container mt-3">
+    <h1>Books</h1>
+    <h5 class="typed-js" data-controller="typed-js">Search a book</h5>
+    <%= render "shared/searchbar" %>
+    <div class="row">
+      <div class="col mt-5">
+        <% if @query %>
+            <p>You searched for <strong><%= @query %></strong>. We found <%= @books.count %> books out of our <%= Book.count %> on our website.</p>
+        <% else %>
+          <p>All <%= Book.count %> books</p>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>
 <div class="container py-5">
   <div class="d-flex align-items-center justify-content-between mb-3">
-    <h3 class="mb-0">My books</h3>
-    <%= link_to "Add a new book", new_book_path, class: "btn btn-flat" %>
+    <%= link_to "Add a new book", new_book_path, class: "btn btn-primary" %>
   </div>
   <div class="row">
     <% @books.each do |book| %>
       <div class="co-12 col-sm-6 col-md-4 mb-3">
         <%= link_to book_path(book), class:"text-decoration-none" do %>
-          <div class="card-category" data-aos="zoom-in" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)) %>)">
-            <%= book.title %>
+          <div class="card-category" data-aos="zoom-in" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3), url(<%= asset_path('default-book.png') %>)">
+            <div>
+              <%= image_tag "default-book.png", class: "img-fluid max-width: 200px height: auto img-thumbmail my-5" %>
+              <h5><%= book.title %></h5>
+            </div>
           </div>
         <% end %>
+        <div>
+          <p><%= book.user.email %></p>
+          <p>Price: <%= book.reservation_price %>€/day</p>
+        </div>
       </div>
     <% end %>
   </div>
