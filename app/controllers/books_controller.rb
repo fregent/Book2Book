@@ -16,9 +16,9 @@ class BooksController < ApplicationController
     @book = Book.new(params_book)
     @book.user = current_user
     if @book.save
-      redirect_to root_path
+      redirect_to root_path(@book)
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -47,5 +47,11 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
     @book.destroy
     redirect_to root_path
+  end
+
+  private
+
+  def params_book
+    params.require(:book).permit(:title, :author, :published_year, :reservation_price, :description)
   end
 end
