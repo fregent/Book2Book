@@ -1,1 +1,15 @@
-<h1>New book</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+    <h1>Add a new book to rent</h1>
+      <%= simple_form_for @book do |f| %>
+        <%= f.input :title, as: :string %>
+        <%= f.input :author, as: :string %>
+        <%= f.input :published_year, as: :integer %>
+        <%= f.input :reservation_price, as: :float, label: "Reservation Price (in €)" %>
+        <%= f.input :description, as: :text %>
+        <%= f.submit class: 'btn btn-primary' %>
+      <% end %>
+    </div>
+  </div>
+</div>
