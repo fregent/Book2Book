@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
     resources :books do
       resources :reservations
-      resources :reviews, only: [:create]
+      resources :reviews, only: [:create, :destroy]
     end
   devise_for :users
   root to: "books#index"
