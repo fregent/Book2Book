@@ -183,7 +183,7 @@ if validation.include?("Y")
 
 
   puts "Finished!"
-elser
+else
   puts "You did not type 'Y'."
 end
 puts "Now exiting..."
