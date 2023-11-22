@@ -1,5 +1,11 @@
 <% if user_signed_in? %>
-  <%= render "books/index" %>
+  <div class="container mt-4"> 
+    <%= render "books/index" %>
+  </div>
 <% else %>
-  <h2>Welcome to Book2Book!</h2>
+  <div class="container mt-4"> 
+    <div class="jumbotron"> 
+      <h2>Bienvenue sur Book2Book !</h2>
+    </div>
+  </div>
 <% end %>
