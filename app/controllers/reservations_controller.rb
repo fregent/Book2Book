@@ -7,7 +7,6 @@ class ReservationsController < ApplicationController
 
   def show
     @reservation = Reservation.find(params[:id])
-    @book = @reservation.book
     @user = current_user
     @reservations = current_user.reservations
   end
@@ -23,31 +22,22 @@ class ReservationsController < ApplicationController
   end
 
   def create
-    @reservation = Reservation.new(params_reservation)
+    @reservation = Reservation.new(reservation_params)
     @book = Book.find(params[:book_id])
     @reservation.book = @book
     @reservation.user = current_user
     if @reservation.save
-      redirect_to book_path(@book)
+      redirect_to book_reservation_path(@book, @reservation)
     else
       render "books/show"
     end
   end
 
-  def create
-    @reservation = Reservation.new(reservation_params)
-    @reservation.user = current_user
-    if @reservation.save
-      redirect_to reservation_path(@reservation), notice: 'Your book has been booked!'
-    else
-      render :new, status: :unprocessable_entity
-    end
-  end
 
     private
 
   def reservation_params
-    params.require(:reservation).permit(:duration_start, :duration_end, :book_id)
+    params.require(:reservation).permit(:duration_start, :duration_end)
   end
 
 end
