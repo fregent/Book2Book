@@ -8,6 +8,33 @@
         <h3>A bit more about this book...</h3>
         <p><%= @book.description %></p>
       </div>
+      <%= link_to "See all books", books_path %>
+        <br>
+        <br>
+        <div class="reviews">
+          <h3>Reviews:</h1>
+
+            <%= simple_form_for [@book, @review] do |f| %>
+              <%= f.input :rating, collection: 0..5 %>
+              <%= f.input :content%>
+              <%= f.submit class: 'btn btn-primary' %>
+            <% end %>
+
+          <% @reviews.each do |review| %>
+
+            <div>
+              <h6>
+                Rate: <%=review.rating%>
+              </h6>
+              <p>
+                <%=review.content%>
+              </p>
+            </div>
+              <br>
+             <%end%>
+        </div>
+
+
     </div>
 
     <div class="col-4">
@@ -30,11 +57,13 @@
         <h3>Details</h3>
         <div class="flex">
           <div class="flex">
-            Contact <%= @user.email %> to get this book!
+            Contact <%= @user_book.email %> to get this book!
           </div>
-          <div class="flex ms-3">
-            <%= @book.reservation_price %>€
-          </div>
+          <%# <div class="flex ms-3"> %>
+            <h6>
+            Price: <%= @book.reservation_price %>€ / day
+            </h6>
+          <%# </div> %>
         </div>
       </div>
       <div class="flat-show-card">

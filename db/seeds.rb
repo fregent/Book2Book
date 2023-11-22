@@ -12,8 +12,6 @@ puts "The database will be reset... Are you sure? (Type 'Y' to comfirm)"
 validation = gets.chomp
 if validation.include?("Y")
   puts "Cleaning database..."
-  User.destroy_all
-  Book.destroy_all
 
   puts "Creating new users..."
   User.create!(
@@ -69,6 +67,64 @@ if validation.include?("Y")
     description: "Le roi et la reine ont organisé une fête splendide au palais pour la baptême de la petite princesse. Et ils lui ont donné pour marraines toutes les fées du royaume. Hélas, ils avaient oublié d'inviter une vieille fée qui vivait recluse dans sa tour. Pour se venger, elle s'approcha du berceau de l'enfant et lui prédit qu'elle se percerait la main d'un fuseau et qu'elle en mourrait...",
     user_id: 4
   )
+
+  Review.create!(
+    content: "Ma fille de 7ans vient d'apprendre a lire et je chercher un livre pour ses premières lectures : elle a tout simplement dévoré ce livre en un week-end.",
+    rating: rand(0..5),
+    user_id: 3,
+    book_id: 2
+  )
+
+  Review.create!(
+    content: "Avant je n'aimais pas lire et j'ai commencé a lire la série vers 6 ans depuis ma chambre est remplie de livre !! Grâce à ce bouquin lire est un passion...",
+    rating: rand(0..5),
+    user_id: 3,
+    book_id: 2
+  )
+
+  Review.create!(
+    content: "il est vraiment dommage de constater que dans le livre dans la version anglaise nous avons plus de détaille dans la narration que dans la version française que c'est-il donc passé la langue française n'est pas pauvre a se point la ....",
+    rating: rand(0..5),
+    user_id: 1,
+    book_id: 1
+  )
+
+  Review.create!(
+    content: "Achat fait pour ma fille de 13 ans qui veut se perfectionner en anglais. Elle est très contente du livre",
+    rating: rand(0..5),
+    user_id: 1,
+    book_id: 1
+  )
+
+  Review.create!(
+    content: "Suivant ce manga depuis près de 10 ans, je suis ravie de voir et revoir les aventures de Luffy et son équipage à travers les livres. Manga à conseiller aux personnes qui adorent les aventures liées à la piraterie.",
+    rating: rand(0..5),
+    user_id: 2,
+    book_id: 3
+  )
+
+  Review.create!(
+    content: "Une super histoire qui traite habillement de vrai sujet de société et qui captive toujours après plus de 100 tomes !",
+    rating: rand(0..5),
+    user_id: 2,
+    book_id: 3
+  )
+
+  Review.create!(
+    content: "Très satisfait. Les images sont magnifiques, à l'identique des films de Walt Disney. --Emeraud",
+    rating: rand(0..5),
+    user_id: 4,
+    book_id: 4
+  )
+
+  Review.create!(
+    content: "Ma petite fille Emeraude était ravie de continuer sa collection",
+    rating: rand(0..5),
+    user_id: 4,
+    book_id: 4
+  )
+
+
   puts "Finished!"
 else
   puts "You did not type 'Y'."
