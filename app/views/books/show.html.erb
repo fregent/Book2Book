@@ -8,19 +8,21 @@
         <h3>A bit more about this book...</h3>
         <p><%= @book.description %></p>
       </div>
-      <%= link_to "See all books", books_path %>
+      <%= link_to "<= Go back to all books", books_path %>
         <br>
         <br>
         <div class="reviews">
           <h3>Reviews:</h1>
 
             <%= simple_form_for [@book, @review] do |f| %>
-              <%= f.input :rating, collection: 0..5 %>
+              <%= f.input :rating, collection: 1..5 %>
               <%= f.input :content%>
               <%= f.submit class: 'btn btn-primary' %>
             <% end %>
+<br>
+<br>
 
-          <% @reviews.each do |review| %>
+          <%@reviews.each do |review|%>
 
             <div>
               <h6>
