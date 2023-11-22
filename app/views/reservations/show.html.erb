@@ -1,2 +1,9 @@
-<h1>Reservations#show</h1>
-<p>Find me in app/views/reservations/show.html.erb</p>
+<h1>Reservation</h1>
+<h3> <%= @reservation.book.title %> </h3>
+author : <%=  @reservation.book.author %>
+<%= @reservation.book.published_year%>
+<p> price : <%= @reservation.book.reservation_price %> par jour </p>
+<p> you reserved this book from <%= @reservation.duration_start%> to <%= @reservation.duration_end%> </p>
+
+<p> total price : <%= (@reservation.duration_end - @reservation.duration_start).to_i * @reservation.book.reservation_price %> </p>
+<p> sent to : <%= @reservation.user.adress%> </p>
