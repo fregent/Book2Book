@@ -1,1 +1,31 @@
-<h1>Reservations</h1>
+
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+  Rent this Book
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h1>Reservation</h1>
+            <h3> <%= @reservation.book.title %> </h3>
+            author : <%=  @reservation.book.author %>
+            <%= @reservation.book.published_year%>
+            <p> price : <%= @reservation.book.reservation_price %> par jour </p>
+            <p> you reserved this book from <%= @reservation.duration_start%> to <%= @reservation.duration_end%> </p>
+
+            <p> total price : <%= (@reservation.duration_end - @reservation.duration_start).to_i * @reservation.book.reservation_price %> </p>
+            <p> sent to : <%= @reservation.user.adress%> </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Confirm Reservation</button>
+        <button type="button" class="btn btn-danger">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
