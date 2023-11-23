@@ -21,14 +21,18 @@
   <div class="row">
     <% @books.each do |book| %>
       <div class="co-12 col-sm-6 col-md-4 mb-3">
+
         <%= link_to book_path(book), class:"text-decoration-none" do %>
+
           <div class="card-category" data-aos="zoom-in" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3), url(<%= asset_path('default-book.png') %>)">
             <div>
-              <%= image_tag "default-book.png", class: "img-fluid max-width: 200px height: auto img-thumbmail my-5" %>
+              <%= image_tag book.picture_url, class: "img-fluid max-width: 200px height: auto img-thumbmail my-5" %>
               <h5><%= book.title %></h5>
             </div>
           </div>
+
         <% end %>
+
         <div>
           <p>
            <h5><%= book.author %></h5>
@@ -36,8 +40,8 @@
           <br>
           Price: <%= book.reservation_price %>€/day
           </p>
-
         </div>
+
       </div>
     <% end %>
   </div>

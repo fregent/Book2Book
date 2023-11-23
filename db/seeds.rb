@@ -13,7 +13,12 @@ validation = gets.chomp
 if validation.include?("Y")
 
   puts "Cleaning database..."
+  User.destroy_all
+  Book.destroy_all
+
   puts "Creating new users..."
+
+  default_url = "default-book.png"
 
   User.create!(
     username: "Frédou_du77",
@@ -57,11 +62,12 @@ if validation.include?("Y")
     password_confirmation: "123456",
   )
   Book.create!(
-    title: "Harry Potter and the Philosopher's Stone",
+    title: "Harry Potter à L'école des Sorciers",
     author: "J. K. Rowling",
     published_year: 1997,
     reservation_price: 0.13,
-    description: "Harry Potter and the Philosopher's Stone is a fantasy novel written by British author J. K. Rowling. The first novel in the Harry Potter series and Rowling's debut novel, it follows Harry Potter, a young wizard who discovers his magical heritage on his eleventh birthday, when he receives a letter of acceptance to Hogwarts School of Witchcraft and Wizardry. Harry makes close friends and a few enemies during his first year at the school and with the help of his friends, Ron Weasley and Hermione Granger, he faces an attempted comeback by the dark wizard Lord Voldemort, who killed Harry's parents, but failed to kill Harry when he was just 15 months old.",
+    description: "Le jour de ses onze ans, Harry Potter, un orphelin élevé par un oncle et une tante qui le détestent, voit son existence bouleversée. Un géant vient le chercher pour l’emmener à Poudlard, une école de sorcellerie! Voler en balai, jeter des sorts, combattre les trolls : Harry Potter se révèle un sorcier doué. Mais un mystère entoure sa naissance et l’effroyable V..., le mage dont personne n’ose prononcer le nom. Amitié, surprises, dangers, scènes comiques, Harry découvre ses pouvoirs et la vie à Poudlard. Le premier tome des aventures du jeune héros vous ensorcelle aussitôt!",
+    picture_url: "http://books.google.com/books/content?id=nvijsUyJYR4C&printsec=frontcover&img=1&zoom=2&edge=curl&imgtk=AFLRE72jixEJVPzQ06ens75mHxbDDJbRL_SuV_wms_J65dUNO-4HUxuzg03P0YpdLSrvMOZNsS6QFDVOptv0RCydDYCMbYdz4gaCy9SyRYIgjwL6EhJhDLuq9IY2nJOSaOqctexRKGTk&source=gbs_api",
     user_id: 1
   )
   Book.create!(
@@ -70,6 +76,7 @@ if validation.include?("Y")
     published_year: 2021,
     reservation_price: 0.12,
     description: "Bloom a seize ans et mène une vie tranquille avec ses parents à Gardenia. Jusqu'au jour où elle porte secours à une jeune fille inconnue et ailée ... Alors qu'elles luttent contre des créatures magiques, une force mystérieuse jaillit des mains de Bloom. Bloom serait-elle une fée, comme sa nouvelle amie, Stella ?",
+    picture_url: "http://books.google.com/books/publisher/content?id=eWgOEAAAQBAJ&printsec=frontcover&img=1&zoom=2&edge=curl&imgtk=AFLRE70jTjCZcdPiZFCyqqugTOHnn2Yz12xXLyA0m7gqovlcdC9BF7gMe_EdIZrAwTnr9Ex47_38-jNkBXkE74HrVuFGAV9Of13pMy5AunnEH5ykhcnRBXOqFLV9uZPoJ8GllN3-IsDK&source=gbs_api",
     user_id: 3
   )
   Book.create!(
@@ -79,6 +86,7 @@ if validation.include?("Y")
     reservation_price: 0.19,
     description: "Nous sommes à l'ère des pirates. Lufy, un garçon espiègle, rêve de devenir le roi des pirates en trouvant le One Piece, un fabuleux trésor. Par mégarde, Lufy a avalé un jour un fruit démoniaque qui l'a transformé en homme caoutchouc. Depuis, il est capable de contorsionner son corps élastique dans tous les sens, mais il a perdu la faculté de nager.
     Avec l'aide de ses précieux amis, dont le fidèle Shanks, il va devoir affronter de redoutables pirates dans des aventures toujours plus rocambolesques.",
+    picture_url: "http://books.google.com/books/publisher/content?id=AagcAwAAQBAJ&printsec=frontcover&img=1&zoom=2&edge=curl&imgtk=AFLRE70XgpD2qzmHRutgM2L7e7peF594MA6ySeb1fABtrmxppPzHoQJp9O7MPe-0AU_m0AwrcgXrAvsSoX3mf-cRusQKA46hqFN3EskbGGsiao4AqEWt6Vn0iG2LmEy2EY3wmtjJdX3n&source=gbs_api",
     user_id: 2
   )
   Book.create!(
@@ -87,6 +95,7 @@ if validation.include?("Y")
     published_year: 2014,
     reservation_price: 0.39,
     description: "Le roi et la reine ont organisé une fête splendide au palais pour la baptême de la petite princesse. Et ils lui ont donné pour marraines toutes les fées du royaume. Hélas, ils avaient oublié d'inviter une vieille fée qui vivait recluse dans sa tour. Pour se venger, elle s'approcha du berceau de l'enfant et lui prédit qu'elle se percerait la main d'un fuseau et qu'elle en mourrait...",
+    picture_url: "http://books.google.com/books/publisher/content?id=PfVNDQAAQBAJ&printsec=frontcover&img=1&zoom=2&edge=curl&imgtk=AFLRE717OfDu7viUTz428yXVy0qdQCy7XSPr6QP62c67B4j1nDSPngsY9NdXFbTWjF4PWE3z3tknh1wU9KYL-3siSETBv0lZJvtRrX0PC0kkHWnZgAnHhdOVNfvq0HE1QRUu9nnGtehq&source=gbs_api",
     user_id: 4
   )
 
@@ -96,6 +105,7 @@ if validation.include?("Y")
     published_year: 2023,
     reservation_price: 500,
     description: "Un beau jour, Sahelma se balada dans son jardin. Soudainement, elle apperçu une lapine (Dalina) avec une drôle de montre. Elle se mit a la courser et tomba dans une trou. Elle se retrouva au Pays des Merveilles et vécut des horreurs tout en étant coursé par GILSON Le Chapelier Fou",
+    picture_url: default_url,
     user_id: 4
   )
 
@@ -105,6 +115,7 @@ if validation.include?("Y")
     published_year: 2023,
     reservation_price: 0.7,
     description: "Un jour Laïd alla au concert de gazo. il revint sans téléphone et sans espoirs.",
+    picture_url: default_url,
     user_id: 3
   )
   Book.create!(
@@ -112,6 +123,7 @@ if validation.include?("Y")
     author: "Ahmed Salah",
     published_year: 2023,
     reservation_price: 0.7,
+    picture_url: default_url,
     description: "Gallaad vous fait des super recettes de Pâtes au Lardons boucanés",
     user_id: 3
   )
