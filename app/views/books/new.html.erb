@@ -1,15 +1,53 @@
 <div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-sm-10 col-sm-offset-1">
-    <h1>Add a new book to rent</h1>
-      <%= simple_form_for @book do |f| %>
-        <%= f.input :title, as: :string %>
-        <%= f.input :author, as: :string %>
-        <%= f.input :published_year, as: :integer %>
-        <%= f.input :reservation_price, as: :float, label: "Reservation Price (in €)" %>
-        <%= f.input :description, as: :text %>
-        <%= f.submit class: 'btn btn-primary' %>
-      <% end %>
+  <div class="row justify-content-center mt-5">
+    <div class="col-md-6">
+      <div class="card" style="white">
+        <div class="card-body">
+          <form class="simple_form form" id="new_book" novalidate="novalidate" action="/books" accept-charset="UTF-8" method="post">
+            <input type="hidden" name="authenticity_token" value="fFP9vmuyPOl_DJojCpc7_fBsuw_kFSHDxl7uqUI_WmC7sLrs-CXxcVjzc6KikT9wFPeACK70TW6gS8eKlQ8aeA" autocomplete="off">
+            
+            <h1 class="text-center mb-4" style="color: #6B584C;">Add a new book to rent</h1>
+
+            <div class="mb-3">
+              <label class="string optional form-label " style="color: #C8AD7F;" for="book_title">Title</label>
+              <div class="mb-3 string optional book_title">
+                <input class="form-control string optional" type="text" name="book[title]" id="book_title">
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label class="string optional form-label" style="color: #C8AD7F;" for="book_author">Author</label>
+              <div class="mb-3 string optional book_author">
+                <input class="form-control string optional" type="text" name="book[author]" id="book_author">
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label class="integer optional form-label" style="color: #C8AD7F;" for="book_published_year">Published year</label>
+              <div class="mb-3 integer optional book_published_year">
+                <input class="form-control numeric integer optional" type="number" step="1" name="book[published_year]" id="book_published_year">
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label" style="color: #C8AD7F;" for="book_reservation_price">Reservation Price (in €)</label>
+              <div class="mb-3 float optional book_reservation_price">
+                <input class="form-control numeric float optional" type="number" step="any" name="book[reservation_price]" id="book_reservation_price">
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label class="text optional form-label" style="color: #C8AD7F;" for="book_description">Description</label>
+              <div class="mb-3 text optional book_description">
+                <textarea class="form-control text optional" name="book[description]" id="book_description"></textarea>
+              </div>
+            </div>
+
+            <input type="submit" name="commit" value="Submit" class="btn btn-primary btn-block" data-disable-with="Submit">
+          </form>
+          
+        </div>
+      </div>
     </div>
   </div>
 </div>

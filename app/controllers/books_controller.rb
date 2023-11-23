@@ -7,6 +7,10 @@ class BooksController < ApplicationController
     @user_books = current_user.books
   end
 
+  def my_books
+    @user_books = current_user.books
+  end
+
   def new
     @book = Book.new
     @user = current_user
@@ -45,9 +49,13 @@ class BooksController < ApplicationController
 
   def destroy
     @book = Book.find(params[:id])
+    @user = current_user
     @book.destroy
     redirect_to root_path
+
   end
+
+
 
   private
 

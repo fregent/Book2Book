@@ -11,25 +11,47 @@
 puts "The database will be reset... Are you sure? (Type 'Y' to comfirm)"
 validation = gets.chomp
 if validation.include?("Y")
-  puts "Cleaning database..."
 
+  puts "Cleaning database..."
   puts "Creating new users..."
+
   User.create!(
+    username: "Frédou_du77",
+    first_name:"Frédéric",
+    last_name:"Régent",
+    adress:"11 rue Benjamin Franklin, 77000 La Rochette",
+    birthdate: Date.new(1996, 9, 12),
     email: "fred@book2book.com",
     password: "123456",
     password_confirmation: "123456",
   )
+
   User.create!(
+    username: "Mister_Dré78",
+    first_name:"André",
+    last_name:"Leroy-Sismondino",
+    adress:"1 Rue José Maria de Hérédia, 78150 Le Chesnay",
+    birthdate: Date.new(1998, 12, 4),
     email: "andre@book2book.com",
     password: "123456",
     password_confirmation: "123456",
   )
   User.create!(
+    username: "Camp_Rock_Sahelma92",
+    first_name:"Sahelma",
+    last_name:"Zakha",
+    adress:"200 Av. de la République, 92000 Nanterre",
+    birthdate: Date.new(2000, 3, 24),
     email: "selma@book2book.com",
     password: "123456",
     password_confirmation: "123456",
   )
   User.create!(
+    username: "Pause_Dodo_du95",
+    first_name:"Emeraude",
+    last_name:"Ntondo",
+    adress:"44 Bd Rhin et Danube, 95130 Franconville",
+    birthdate: Date.new(2000, 5, 26),
     email: "emeraude@book2book.com",
     password: "123456",
     password_confirmation: "123456",
@@ -67,6 +89,34 @@ if validation.include?("Y")
     description: "Le roi et la reine ont organisé une fête splendide au palais pour la baptême de la petite princesse. Et ils lui ont donné pour marraines toutes les fées du royaume. Hélas, ils avaient oublié d'inviter une vieille fée qui vivait recluse dans sa tour. Pour se venger, elle s'approcha du berceau de l'enfant et lui prédit qu'elle se percerait la main d'un fuseau et qu'elle en mourrait...",
     user_id: 4
   )
+
+  Book.create!(
+    title: "Sahelma au pays des Merveillest",
+    author: "Aurélien",
+    published_year: 2023,
+    reservation_price: 500,
+    description: "Un beau jour, Sahelma se balada dans son jardin. Soudainement, elle apperçu une lapine (Dalina) avec une drôle de montre. Elle se mit a la courser et tomba dans une trou. Elle se retrouva au Pays des Merveilles et vécut des horreurs tout en étant coursé par GILSON Le Chapelier Fou",
+    user_id: 4
+  )
+
+  Book.create!(
+    title: "Laïd au Concert de Gazo",
+    author: "Dalina",
+    published_year: 2023,
+    reservation_price: 0.7,
+    description: "Un jour Laïd alla au concert de gazo. il revint sans téléphone et sans espoirs.",
+    user_id: 3
+  )
+  Book.create!(
+    title: "Recette de Pâte/Lardons de Gallaad",
+    author: "Ahmed Salah",
+    published_year: 2023,
+    reservation_price: 0.7,
+    description: "Gallaad vous fait des super recettes de Pâtes au Lardons boucanés",
+    user_id: 3
+  )
+
+
 
   Review.create!(
     content: "Ma fille de 7ans vient d'apprendre a lire et je chercher un livre pour ses premières lectures : elle a tout simplement dévoré ce livre en un week-end.",
@@ -122,6 +172,13 @@ if validation.include?("Y")
     rating: rand(0..5),
     user_id: 4,
     book_id: 4
+  )
+
+  Review.create!(
+    content: "J'ai A-D-O-R-É, j'ai bcp pleuré, j'ai demandé à ma meuf de me le louer. -Laïd",
+    rating: 5,
+    user_id: 4,
+    book_id: 5
   )
 
 

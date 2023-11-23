@@ -2,7 +2,7 @@
   <div class="row ">
     <div class="col-8 mb-5 mt-5">
       <div class="flat-show-card mb-5">
-        
+
         <h1><%= @book.title %></h1>
       </div>
       <div class="flat-show-card">
@@ -11,65 +11,74 @@
       </div>
       <%# <button type="button" class="btn btn-primary">Primary</button> %>
 
-      <%= link_to "Go back to all books",  books_path, class:"btn btn-primary " %>
+      <%= link_to "Go back to all books",  books_path, class:"btn btn-primary rounded-pill btn-sm " %>
         <br>
         <br>
-        <div class="reviews">
+        <div class="reviews mt-5 border border-end-0 p-5  ">
           <h3>Reviews:</h1>
 
-            <%= simple_form_for [@book, @review] do |f| %>
-              <%= f.input :rating, collection: 1..5 %>
-              <%= f.input :content%>
-              <%= f.submit  class:"btn btn-primary " %>
-            <% end %>
-<br>
-<br>
-          <% @reviews.each do |review| %>
+          <%= simple_form_for [@book, @review] do |f| %>
+            <%= f.input :rating, collection: 1..5 %>
+            <%= f.input :content%>
+            <%= f.submit class: "btn btn-primary btn-sm border-radius" %>
+          <% end %>
+          </div>
+          <br>
+          <br>
 
+
+
+          <div class= "">
+          <% @reviews.each do |review| %>
             <div>
-              <h6>
-                Rate: <%=review.rating%>
-              </h6>
+              <div class="stars">
+                <% count = 0 %>
+                <% 5.times do %>
+                  <% if review.rating > count %>
+                      <i class="fa-solid fa-star"style="color:#685634;"></i>
+                      <% else %>
+                      <i class="fa-regular fa-star"style="color:#685634;"></i>
+                  <% end %>
+                  <% count += 1 %>
+                <% end %>
+              </div>
+              <br>
               <p>
                 <%=review.content%>
               </p>
+              <% if current_user == review.user %>
+                <%= link_to "Supprimer", book_review_path(@book, review), data: { turbo_method: :delete, turbo_confirm: "Êtes-vous sûr de vouloir supprimer cette review?" }, class: "btn btn-info btn-sm " %>
+              <% end %>
             </div>
-              <br>
-             <%end%>
-        </div>
-
+            <br>
+          <%end%>
+          </div>
 
     </div>
 
     <div class="col-4">
-      <div class=" mt-5 shadow p-3 mb-5 rounded border border-light-subtle rounded">
-       <div class="ms-5"> <h5>Book this book! </h5> </div>
-
-    <%= simple_form_for [@book,@reservation] do |f| %>
-  <%= f.input :duration_start, as: :date, html5: true %>
-  <%= f.input :duration_end, as: :date, html5: true %>
-  <%= f.button:submit, class:"btn btn-dark ms-5 " %>
-<% end %>
-          <%# <div class="input-group mt-2">
-            <span class="input-group-text" id="end-date-label">To:</span>
-            <input type="text" class="form-control" placeholder="18/10/2017" aria-label="end-date" aria-describedby="start-date-label">
-          </div> %>
-          <%# <input type="submit" value="Book" class="btn btn-success mt-2" style="width: 100%"> %>
-
-        <%# </form> %>
+      <div class=" mt-5 shadow-sm p-3 mb-5 bg-white rounded  rounded-end rounded-5 p-3">
+        <div class="ms-5">
+          <h5>Book this book! </h5>
+        </div>
+        <%= simple_form_for [@book,@reservation] do |f| %>
+          <%= f.input :duration_start, as: :date, html5: true %>
+          <%= f.input :duration_end, as: :date, html5: true %>
+          <%= f.button:submit, class:"btn btn-primary ms-5 " %>
+        <% end %>
       </div>
-      <div class=" bg-white shadow p-3 mb-5  rounded border border-light-subtle rounded">
+      <div class="bg-white shadow-sm p-3 mb-5 rounded rounded-end rounded-5 p-3">
          <h3>Details</h3>
         <div class="flex">
           <div class="flex">
-            Contact <%= @user_book.email %> to get this book!
+            Owner: <%= @user_book.username %>
           </div>
           <%# <div class="flex ms-3"> %>
             <h6>
             Price: <%= @book.reservation_price %>€ / day
             </h6>
           <%# </div> %>
-        </div>
+      </div>
 
       <div class="flat-show-card">
         <div class="flex-align">
@@ -82,7 +91,7 @@
           </div>
         </div>
       </div>
+      </div>
     </div>
   </div>
-   </div>
 </div>

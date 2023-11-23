@@ -10,9 +10,9 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body class="bg-white">
+  <body class="bg-success">
+     <%= render "shared/navbar" %>
     <div class="container">
-      <%= render "shared/navbar" %>
       <%= yield %>
     </div>
   </body>
