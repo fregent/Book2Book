@@ -3,12 +3,12 @@ class BooksController < ApplicationController
       def index
         @books = if params[:query].present?
           Book.search_by_title_and_author(params[:query])
-                else
-                  Book.all
-                end
+        else
+          Book.all
+        end
         @book = Book.new
         @user = current_user
-        @user_books = current_user.books
+        @user_books = @user.books
         @book_counter = @books.count
       end
 
