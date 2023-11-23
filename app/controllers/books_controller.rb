@@ -7,6 +7,10 @@ class BooksController < ApplicationController
     @user_books = current_user.books
   end
 
+  def my_books
+    @user_books = current_user.books
+  end
+
   def new
     @book = Book.new
     @user = current_user
