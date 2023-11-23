@@ -30,8 +30,13 @@
           </div>
         <% end %>
         <div>
-          <p><%= book.user.email %></p>
-          <p>Price: <%= book.reservation_price %>€/day</p>
+          <p>
+           <h5><%= book.author %></h5>
+          Owner:  <%= book.user.username %>
+          <br>
+          Price: <%= book.reservation_price %>€/day
+          </p>
+
         </div>
       </div>
     <% end %>
