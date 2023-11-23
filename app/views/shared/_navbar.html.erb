@@ -23,9 +23,9 @@
           <li class="nav-item dropdown">
 
           <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <% if @user.avatar.attached? %>
-              <%= cl_image_tag(@user.avatar.key, :width => 200, :height => 200,
-                 :crop => :thumb, :gravity => :face) %>
+            <% if current_user.avatar.attached? %>
+              <%= cl_image_tag(current_user.avatar.key, :width => 40, :height => 40,
+                 :crop => :thumb, :gravity => :face, class: "avatar") %>
             <% else %>
               <%= image_tag "default-profile-picture", class: "avatar", alt: "dropdown menu" %>
             <% end %>
