@@ -1,0 +1,24 @@
+<h1>Welcome to your Books!</h1>
+<h3>Here are the Reservations you made:</h3>
+<br>
+<br>
+<% @reservation_user.each do |reservation| %>
+  <div class="co-12 col-sm-6 col-md-4 mb-3">
+          <h1>Reservation:</h1>
+    <%= link_to book_reservation_path(reservation.book, reservation), class: "text-decoration-none" do %>
+      <div class="card-category" data-aos="zoom-in" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3), url('<%= asset_path('default-book.png') %>')">
+        <div>
+          <%= image_tag "default-book.png", class: "img-fluid max-width: 200px height: auto img-thumbmail my-5" %>
+<h3><%= reservation.book.title %></h3>
+author: <%= reservation.book.author %>
+<%= reservation.book.published_year %>
+<p>price: <%= reservation.book.reservation_price %> par jour</p>
+<p>you reserved this book from <%= reservation.duration_start %> to <%= reservation.duration_end %></p>
+
+<p>total price: <%= (reservation.duration_end - reservation.duration_start).to_i * reservation.book.reservation_price %></p>
+<p>sent to: <%= reservation.user.adress %></p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>
