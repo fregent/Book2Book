@@ -8,7 +8,7 @@
         <% if @query %>
             <p>You searched for <strong><%= @query %></strong>. We found <%= @books.count %> books out of our <%= Book.count %> on our website.</p>
         <% else %>
-          <p>All <%= Book.count %> books</p>
+          <p>All <%= @book_counter %> books</p>
         <% end %>
       </div>
     </div>
