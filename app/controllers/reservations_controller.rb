@@ -5,10 +5,8 @@ class ReservationsController < ApplicationController
     @reservations = Reservation.all
   end
 
-  def show
-    @reservation = Reservation.find(params[:id])
-    @user = current_user
-    @reservations = current_user.reservations
+  def my_reservations
+    @reservation_user = current_user.reservations
   end
 
   def show

@@ -2,6 +2,8 @@ source "https://rubygems.org"
 
 ruby "3.1.2"
 
+
+gem "pg_search"
 # The Google Auth Library for Ruby
 gem "googleauth"
 
@@ -55,6 +57,7 @@ gem "autoprefixer-rails"
 gem "font-awesome-sass", "~> 6.1"
 gem "simple_form", github: "heartcombo/simple_form"
 gem "cloudinary"
+gem "dotenv-rails"
 gem "sassc-rails"
 
 group :development, :test do
