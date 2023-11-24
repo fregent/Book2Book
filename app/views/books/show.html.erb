@@ -65,20 +65,24 @@
           <div class="flex">
             Owner: <%= @user_book.username %>
           </div>
-            <h6>
+          <h6>
             Price: <%= @book.reservation_price %>€ / day
-            </h6>
+          </h6>
 <br>
-             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-            <h4 class="btn-book">Book this book!</h4>
-          </button>
+            <% if current_user == @user_book %>
+              <h6>You already own this book!</h5>
+            <% else %>
+              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+              <h5 class="btn-book">Book this book!</h5>
+              </button>
+            <% end %>
 <br>
 <br>
           <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="staticBackdropLabel">Do you want to confirm this Reservation ?</h5>
+                  <h5 class="modal-title" id="staticBackdropLabel">Do you confirm this reservation?</h5>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body" style="

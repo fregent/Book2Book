@@ -1,17 +1,26 @@
 <% if @reservation.duration_start.nil? || @reservation.duration_end.nil? %>
 
-  <p>Sorry, there was a problem registering your reservation. Make sure you select a valid date!</p>
+  <div class="alert alert-danger" role="alert">
+    Sorry, there was a problem registering your reservation. Make sure you select a valid date!
+  </div>
   <%= link_to "Go back to book", book_path(@reservation.book), class: "btn btn-primary rounded-pill" %>
 
 <% else %>
 
-  <h1>Reservation</h1>
-  <h3> <%= @reservation.book.title %> </h3>
-  author : <%=  @reservation.book.author %>
-  <%= @reservation.book.published_year%>
-  <p> price : <%= @reservation.book.reservation_price %> par jour </p>
-  <p> you reserved this book from <%= @reservation.duration_start%> to <%= @reservation.duration_end%> </p>
-  <p> total price : <%= (@reservation.duration_end - @reservation.duration_start).to_i * @reservation.book.reservation_price %> </p>
-  <p> sent to : <%= @reservation.user.adress%> </p>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <h1 class="display-4">Reservation</h1>
+        <%= image_tag @reservation.book.picture_url, class: "img-fluid max-width: 50px img-thumbnail my-5 mx-auto" %>
+        <h3><%= @reservation.book.title %></h3>
+        <p class="lead">Author: <%= @reservation.book.author %></p>
+        <p class="lead">Published Year: <%= @reservation.book.published_year %></p>
+        <p class="lead">Price: <%= @reservation.book.reservation_price %>€ / day</p>
+        <p class="lead">You reserved this book from <%= @reservation.duration_start %> to <%= @reservation.duration_end %></p>
+        <p class="lead">Total Price: <%= (@reservation.duration_end - @reservation.duration_start).to_i * @reservation.book.reservation_price %> €</p>
+        <p class="lead">Sent to: <%= @reservation.user.adress %></p>
+      </div>
+    </div>
+  </div>
 
 <% end %>
