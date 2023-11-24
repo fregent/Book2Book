@@ -23,8 +23,11 @@
         <div class="card justify-content-end border bg-white rounded rounded-3.5 p-4">
           <%= link_to book_path(book), class: "text-decoration-none" do %>
             <div class="card-category" data-aos="zoom-in" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3), url(<%= asset_path('default-book.png') %>)">
+              <% if book.picture_url.nil? %>
+                <% book.update!(picture_url: "default-book.png") %>
+              <% end %>
               <div class="img-card d-flex align-items-center justify-content-center">
-                      <%= image_tag book.picture_url, class: "img-fluid max-width-50px height-auto img-thumbnail my-5 mx-auto" %>
+                <%= image_tag book.picture_url, class: "img-fluid max-width-50px height-auto img-thumbnail my-5 mx-auto" %>
               </div>
             </div>
           <% end %>
