@@ -10,7 +10,7 @@
     <div class="book-cards co-12 col-sm-6 col-md-4 mb-3">
       <%= link_to book_path(book), class:"text-decoration-none" do %>
         <div class="card-category" data-aos="zoom-in", url(<%= asset_path('default-book.png') %>)">
-          <div classe="img-card d-flex align-items-center justify-content-center">
+          <div class="img-card d-flex align-items-center justify-content-center flex-column">
             <%= image_tag "default-book.png", class: "img-fluid max-width: 200px height: auto img-thumbmail my-5" %>
             <h5><%= book.title %></h5>
             <h6><%=book.reservation_price%>€ / Day</h6>
