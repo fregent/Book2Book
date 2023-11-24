@@ -92,20 +92,17 @@
                            margin-bottom: 15px;">
 
                   <%= simple_form_for [@book, @reservation], data: { controller: "flatpickr" } do |f| %>
-                  <div class="input-dates">
-                    <%= f.input :duration_start, as: :string, label: 'Start Date:', placeholder:'From...', input_html: { :style=> 'border-color: black;', data: { controller: "datepicker" } } %>
-                    <%= f.input :duration_end, as: :string, label: 'End Date:', placeholder:'Until...', input_html: { :style=> 'border-color: black;', data: { controller: "datepicker" } } %>
-                    <%= f.button :submit ,class: "btn btn-primary mt-3", "data-bs-toggle" => "modal", "data-bs-target" => "#staticBackdrop", input_html: { id: :btn_res }  %>
+                    <div class="input-dates">
+                      <%= f.input :duration_start, as: :string, label: 'Start Date:', placeholder:'From...', input_html: { :style=> 'border-color: black;', data: { controller: "datepicker" } } %>
+                      <%= f.input :duration_end, as: :string, label: 'End Date:', placeholder:'Until...', input_html: { :style=> 'border-color: black;', data: { controller: "datepicker" } } %>
+                      <%= f.button :submit ,class: "btn btn-primary mt-3", "data-bs-toggle" => "modal", "data-bs-target" => "#staticBackdrop", input_html: { id: :btn_res }  %>
+                    </div>
                   <% end %>
-                  </div>
                 </div>
               </div>
             </div>
           </div>
       </div>
-
-
-
 
       <div class="flat-show-card">
         <div class="flex-align">

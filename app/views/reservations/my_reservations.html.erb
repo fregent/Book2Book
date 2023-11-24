@@ -1,39 +1,45 @@
-<h3>Welcome to your Books!</h3>
-<h4>Here are the Reservations you made:</h4>
+<%= link_to "Go back to home page", books_path, class: "btn btn-primary rounded-pill mb-5" %>
+
+<h3>Welcome to your books!</h3>
+<h4>Here are the reservations you made:</h4>
 <br>
 <br>
 
 <% if @reservation_user.empty? == true %>
   <h5>Sorry, You do not have any reservation made so far...</h5>
 <%else%>
-  <% @reservation_user.each do |reservation| %>
-    <% if reservation.duration_start.nil? || reservation.duration_end.nil? %>
-      <% reservation.destroy! %>
-    <% else %>
-      <div class="co-12 col-sm-6 col-md-4 mb-3">
-        <%= link_to book_reservation_path(reservation.book, reservation), class: "text-decoration-none" do %>
-          <div class="card">
-            <div class="card-header">
-              <h5>Reservation Details</h5>
-            </div>
+  <div class="card-container row">
+    <% @reservation_user.each do |reservation| %>
+      <% if reservation.duration_start.nil? || reservation.duration_end.nil? %>
+        <% reservation.destroy! %>
+      <% else %>
+        <div class="book-cards co-12 col-sm-6 col-md-4 mb-3">
+          <%= link_to book_reservation_path(reservation.book, reservation), class: "text-decoration-none" do %>
+            <div class="card-category text-black" data-aos="zoom-in", url(<%= asset_path('default-book.png') %>)>
+              <div class="card-header">
+                <h6 class="btn btn-info">Click to see more details!</h6>
+              </div>
 
-            <div class="card-body">
-              <%= image_tag reservation.book.picture_url, class: "img-fluid max-width: 50px max-height: 80px img-thumbnail my-5 mx-auto" %>
-              <h5 class="card-title"><%= reservation.book.title %></h5>
-              <p class="card-text">
-                Author: <%= reservation.book.author %> <br>
-                Reservation Date: <%= reservation.duration_start %> to <%= reservation.duration_end %>
-              </p>
-              <p>Sending to: <%= reservation.user.adress %></p>
-            </div>
+              <div class="card-body">
+                <div class="img-card d-flex align-items-center justify-content-center">
+                  <%= image_tag reservation.book.picture_url, class: "img-fluid max-width: 50px max-height: 80px img-thumbnail my-5 mx-auto" %>
+                </div>
+                <h5 class="card-title"><%= reservation.book.title %></h5>
+                <p class="card-text">
+                  Author: <%= reservation.book.author %> <br>
+                  Reservation Date: <%= reservation.duration_start %> to <%= reservation.duration_end %>
+                </p>
+                <p>Sending to: <%= reservation.user.adress %></p>
+              </div>
 
-            <div class="card-footer">
-              <p>Price: <%= reservation.book.reservation_price %>€ / day</p>
-              <p>Total price: <%= (reservation.duration_end - reservation.duration_start).to_i * reservation.book.reservation_price %> €</p>
+              <div class="card-footer">
+                <p>Price: <%= reservation.book.reservation_price %>€ / day</p>
+                <p>Total price: <%= (reservation.duration_end - reservation.duration_start).to_i * reservation.book.reservation_price %> €</p>
+              </div>
             </div>
-          </div>
-        <% end %>
-      </div>
+          <% end %>
+        </div>
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
 <% end %>

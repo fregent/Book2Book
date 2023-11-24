@@ -7,20 +7,31 @@
 
 <% else %>
 
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6">
-        <h1 class="display-4">Reservation</h1>
-        <%= image_tag @reservation.book.picture_url, class: "img-fluid max-width: 50px img-thumbnail my-5 mx-auto" %>
-        <h3><%= @reservation.book.title %></h3>
-        <p class="lead">Author: <%= @reservation.book.author %></p>
-        <p class="lead">Published Year: <%= @reservation.book.published_year %></p>
-        <p class="lead">Price: <%= @reservation.book.reservation_price %>€ / day</p>
-        <p class="lead">You reserved this book from <%= @reservation.duration_start %> to <%= @reservation.duration_end %></p>
-        <p class="lead">Total Price: <%= (@reservation.duration_end - @reservation.duration_start).to_i * @reservation.book.reservation_price %> €</p>
-        <p class="lead">Sent to: <%= @reservation.user.adress %></p>
+  <%= link_to "Go back to my reservations", my_reservations_path, class: "btn btn-primary rounded-pill mb-5" %>
+
+  <div class="container d-flex align-items-center justify-content-center">
+    <div class="card">
+      <div class="card-category text-black" data-aos="zoom-in", url(<%= asset_path('default-book.png') %>)>
+        <div class="card-header">
+          <h5 class="card-title"><%= @reservation.book.title %></h5>
+        </div>
+
+        <div class="card-body">
+          <div class="img-card">
+            <%= image_tag @reservation.book.picture_url, class: "img-fluid max-width: 50px max-height: 80px img-thumbnail my-5 mx-auto" %>
+          </div>
+          <p class="card-text">
+            Author: <%= @reservation.book.author %> <br>
+            Reservation Date: <%= @reservation.duration_start %> to <%= @reservation.duration_end %>
+          </p>
+          <p>Sending to: <%= @reservation.user.adress %></p>
+        </div>
+
+        <div class="card-footer">
+          <p>Price: <%= @reservation.book.reservation_price %>€ / day</p>
+          <p>Total price: <%= (@reservation.duration_end - @reservation.duration_start).to_i * @reservation.book.reservation_price %> €</p>
+        </div>
       </div>
     </div>
   </div>
-
 <% end %>

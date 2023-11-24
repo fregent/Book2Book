@@ -9,7 +9,7 @@
             <h1 class="text-center mb-4" style="color: #6B584C;">Add a new book to rent</h1>
 
             <div class="mb-3">
-              <label class="string optional form-label " style="color: #C8AD7F;" for="book_title">Title</label>
+              <label class="string optional form-label" style="color: #C8AD7F;" for="book_title">Title</label>
               <div class="mb-3 string optional book_title">
                 <input class="form-control string optional" type="text" name="book[title]" id="book_title">
               </div>
@@ -19,6 +19,13 @@
               <label class="string optional form-label" style="color: #C8AD7F;" for="book_author">Author</label>
               <div class="mb-3 string optional book_author">
                 <input class="form-control string optional" type="text" name="book[author]" id="book_author">
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label class="text optional form-label" style="color: #C8AD7F;" for="book_description">Description</label>
+              <div class="mb-3 text optional book_description">
+                <input class="form-control text optional" type="text" name="book[description]" id="book_desription">
               </div>
             </div>
 
@@ -33,6 +40,13 @@
               <label class="form-label" style="color: #C8AD7F;" for="book_reservation_price">Reservation Price (in €)</label>
               <div class="mb-3 float optional book_reservation_price">
                 <input class="form-control numeric float optional" type="number" step="any" name="book[reservation_price]" id="book_reservation_price">
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label class="string optional form-label" style="color: #C8AD7F;" for="book_picture_url">Picture URL</label>
+              <div class="mb-3 string optional book_picture_url">
+                <input class="form-control string optional" type="text" name="book[picture_url]" id="book_picture_url">
               </div>
             </div>
 
