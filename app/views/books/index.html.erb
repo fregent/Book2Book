@@ -1,12 +1,12 @@
 <div class="cover mb-4 d-flex align-items-center justify-content-center">
-  <div class="text-center container mt-3 ">
+  <div class="text-center container mt-3">
     <h1>Books</h1>
     <h5 class="typed-js" data-controller="typed-js">Search a book</h5>
     <%= render "shared/searchbar" %>
     <div class="row">
       <div class="col mt-5">
         <% if @query %>
-            <p>You searched for <strong><%= @query %></strong>. We found <%= @books.count %> books out of our <%= Book.count %> on our website.</p>
+          <p>You searched for <strong><%= @query %></strong>. We found <%= @books.count %> books out of our <%= Book.count %> on our website.</p>
         <% else %>
           <p>All <%= @book_counter %> books</p>
         <% end %>
@@ -14,37 +14,29 @@
     </div>
   </div>
 </div>
+
 <div class="container py-5">
   <div class="d-flex align-items-center justify-content-between mb-3">
     <%= link_to "Add a new book", new_book_path, class: "btn btn-primary rounded-pill" %>
   </div>
   <div class="row">
     <% @books.each do |book| %>
-      <div class="co-12 col-sm-6 col-md-4 px-2 ">
-        <div class=" mb-3 border bg-white rounded rounded-5 p-4 ">
-          <%= link_to book_path(book), class:"text-decoration-none" do %>
+      <div class="col-12 col-sm-6 col-md-4 px-2 mb-3">
+        <div class="card h-100 justify-content-end border bg-white rounded rounded-5 p-4">
+          <%= link_to book_path(book), class: "text-decoration-none" do %>
             <div class="card-category" data-aos="zoom-in" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3), url(<%= asset_path('default-book.png') %>)">
-              <div>
-                <%= image_tag book.picture_url, class: "img-fluid max-width: 200px height: auto img-thumbmail my-5" %>
-                <h5 class="text-info"><%= book.title %></h5>
+              <div class="d-flex align-items-center justify-content-center">
+                <%= image_tag book.picture_url, class: "img-fluid max-width: 50px height-auto img-thumbnail my-5 mx-auto" %>
               </div>
             </div>
           <% end %>
-          <div>
-            <p><%= book.user.email %></p>
-            <p>Price: <%= book.reservation_price %>€/day</p>
+          <div class="text-center">
+            <h5 class="text-info"><%= book.title %></h5>
+            <h5><%= book.author %></h5>
+            <p>Owner: <%= book.user.username %></p>
+            <p>Price: <%= book.reservation_price %>€ / day</p>
           </div>
         </div>
-
-        <div>
-          <p>
-           <h5><%= book.author %></h5>
-          Owner:  <%= book.user.username %>
-          <br>
-          Price: <%= book.reservation_price %>€/day
-          </p>
-        </div>
-
       </div>
     <% end %>
   </div>
