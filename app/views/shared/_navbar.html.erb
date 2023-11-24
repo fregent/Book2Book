@@ -28,7 +28,7 @@
               <%= cl_image_tag(current_user.avatar.key, :width => 40, :height => 40,
                  :crop => :thumb, :gravity => :face, class: "avatar") %>
             <% else %>
-              <%= image_tag "default-profile-picture", class: "avatar", alt: "dropdown menu" %>
+              <%= image_tag "default-profile-picture.jpg", class: "avatar", alt: "dropdown menu" %>
             <% end %>
           </a>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
