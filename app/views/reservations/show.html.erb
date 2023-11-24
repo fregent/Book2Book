@@ -1,9 +1,17 @@
-<h1>Reservation</h1>
-<h3> <%= @reservation.book.title %> </h3>
-author : <%=  @reservation.book.author %>
-<%= @reservation.book.published_year%>
-<p> price : <%= @reservation.book.reservation_price %> par jour </p>
-<p> you reserved this book from <%= @reservation.duration_start%> to <%= @reservation.duration_end%> </p>
+<% if @reservation.duration_start.nil? || @reservation.duration_end.nil? %>
 
-<p> total price : <%= (@reservation.duration_end - @reservation.duration_start).to_i * @reservation.book.reservation_price %> </p>
-<p> sent to : <%= @reservation.user.adress%> </p>
+  <p>Sorry, there was a problem registering your reservation. Make sure you select a valid date!</p>
+  <%= link_to "Go back to book", book_path(@reservation.book), class: "btn btn-primary rounded-pill" %>
+
+<% else %>
+
+  <h1>Reservation</h1>
+  <h3> <%= @reservation.book.title %> </h3>
+  author : <%=  @reservation.book.author %>
+  <%= @reservation.book.published_year%>
+  <p> price : <%= @reservation.book.reservation_price %> par jour </p>
+  <p> you reserved this book from <%= @reservation.duration_start%> to <%= @reservation.duration_end%> </p>
+  <p> total price : <%= (@reservation.duration_end - @reservation.duration_start).to_i * @reservation.book.reservation_price %> </p>
+  <p> sent to : <%= @reservation.user.adress%> </p>
+
+<% end %>
