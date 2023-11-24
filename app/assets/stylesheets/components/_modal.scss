@@ -38,3 +38,27 @@
 .back-btn{
 padding: 4;
 }
+
+.card-container {
+  justify-content: space-between;
+}
+
+.book-cards {
+  border: solid;
+  max-width: 350px;
+  max-height: 400px;
+}
+
+.img-fluid {
+max-height: 200px;
+justify-content: center;
+}
+
+.books h5 {
+  font-size: 20px;
+}
+
+.books p {
+  font-size: 16px;
+  margin-bottom: 0.2px;
+}
