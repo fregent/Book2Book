@@ -14,17 +14,22 @@
       <%= link_to "Go back to all books",  books_path, class:"btn btn-primary rounded-pill btn-sm " %>
         <br>
         <br>
-        <div class="reviews mt-5 border border-end-0 p-5  ">
+        <div>
           <h3>Reviews:</h1>
+             <div data-controller="toggle">
+              <button data-action="click->toggle#fire" class="btn btn-outline-primary">Add a new review</button>
+               <%= simple_form_for [@book, @review], html: { "data-toggle-target" => "togglableElement", class: "d-none" } do |f| %>
+               <br>
+                        <%= f.input :rating, collection: 1..5 %>
+                        <%= f.input :content%>
+                        <%= f.submit class: "btn btn-primary btn-sm border-radius" %>
+                <% end %>
+              </div>
+                      <br>
+                      <br>
+            </div>
 
-          <%= simple_form_for [@book, @review] do |f| %>
-            <%= f.input :rating, collection: 1..5 %>
-            <%= f.input :content%>
-            <%= f.submit class: "btn btn-primary btn-sm border-radius" %>
-          <% end %>
-          </div>
-          <br>
-          <br>
+
 
 
 
