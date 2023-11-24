@@ -66,11 +66,18 @@
         <div class="ms-5">
           <h5>Book this book! </h5>
         </div>
-        <%= simple_form_for [@book,@reservation] do |f| %>
-          <%= f.input :duration_start, as: :date, html5: true %>
-          <%= f.input :duration_end, as: :date, html5: true %>
-          <%= f.button:submit, class:"btn btn-primary ms-5 " %>
+       <%= simple_form_for [@book, @reservation], data: { controller: "flatpickr" } do |f| %>
+          <%= f.input :duration_start,
+            as: :string,
+            input_html: { data: { controller: "datepicker" } } %>
+
+          <%= f.input :duration_end,
+            as: :string,
+            input_html: { data: { controller: "datepicker" } } %>
+
+          <%= f.button :submit, class: "btn btn-primary ms-5" %>
         <% end %>
+
 
       </div>
       <div class="bg-white shadow-sm p-3 mb-5 rounded rounded-end rounded-5 p-3">
