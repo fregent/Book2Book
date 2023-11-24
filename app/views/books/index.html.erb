@@ -1,14 +1,14 @@
 <div class="cover mb-4 d-flex align-items-center justify-content-center">
   <div class="text-center container mt-3">
-    <h1>Books</h1>
-    <h5 class="typed-js" data-controller="typed-js">Search a book</h5>
+    <h1 class="title-index">This is all our books for rental</h1>
+    <h5 class="typed-js" data-controller="typed-js" id="search-book">Search a book</h5>
     <%= render "shared/searchbar" %>
     <div class="row">
       <div class="col mt-5">
         <% if @query %>
           <p>You searched for <strong><%= @query %></strong>. We found <%= @books.count %> books out of our <%= Book.count %> on our website.</p>
         <% else %>
-          <p>All <%= @book_counter %> books</p>
+          <p class=" book-count">All <%= @book_counter %> books</p>
         <% end %>
       </div>
     </div>
@@ -22,12 +22,15 @@
         <div class="card h-100 justify-content-end border bg-white rounded rounded-3.5 p-4">
           <%= link_to book_path(book), class: "text-decoration-none" do %>
             <div class="card-category" data-aos="zoom-in" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3), url(<%= asset_path('default-book.png') %>)">
-              <div class="d-flex align-items-center justify-content-center">
-                <%= image_tag book.picture_url, class: "img-fluid max-width: 50px height-auto img-thumbnail my-5 mx-auto" %>
+              <% if book.picture_url.nil? %>
+                <% book.update!(picture_url: "default-book.png") %>
+              <% end %>
+              <div class="img-card d-flex align-items-center justify-content-center">
+                <%= image_tag book.picture_url, class: "img-fluid max-width-50px height-auto img-thumbnail my-5 mx-auto" %>
               </div>
             </div>
           <% end %>
-          <div class="text-center">
+          <div class="books text-center">
             <h5 class="text-info"><%= book.title %></h5>
             <h5><%= book.author %></h5>
             <p>Owner: <%= book.user.username %></p>
@@ -37,4 +40,5 @@
       </div>
     <% end %>
   </div>
+  
 </div>
