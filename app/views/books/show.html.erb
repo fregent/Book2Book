@@ -57,7 +57,7 @@
 
     </div>
 
-    <div class="col-4" d-flex align-items-center>
+    <div class="col-4">
 
       <div class="bg-white shadow-sm pt-3 pl-2 pr-2 pb-3 mb-5 rounded rounded-end rounded-3 p-3" id="booking-details">
          <h3>Details</h3>
@@ -78,6 +78,7 @@
             <% end %>
 <br>
 <br>
+<<<<<<< HEAD
           <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
               <div class="modal-content">
@@ -102,6 +103,9 @@
               </div>
             </div>
           </div>
+=======
+
+>>>>>>> master
       </div>
 
       <div class="flat-show-card">
@@ -119,3 +123,27 @@
     </div>
   </div>
 </div>
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="staticBackdropLabel">Please, give us more information to create your Reservation</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" data-backdrop="false"></button>
+                </div>
+                <div class="modal-body" style="
+                          padding-right: 50px;
+                          padding-left: 50px;
+                          margin-top: 15px;
+                          margin-bottom: 15px;">
+
+                  <%= simple_form_for [@book, @reservation], data: { controller: "flatpickr" } do |f| %>
+                  <div class="input-dates">
+                    <%= f.input :duration_start, as: :string, label: 'Start Date:', placeholder:'From...', input_html: { :style=> 'border-color: black;', data: { controller: "datepicker" } } %>
+                    <%= f.input :duration_end, as: :string, label: 'End Date:', placeholder:'Until...', input_html: { :style=> 'border-color: black;', data: { controller: "datepicker" } } %>
+                    <%= f.button :submit ,class: "btn btn-primary mt-3", "data-bs-toggle" => "modal", "data-bs-target" => "#staticBackdrop", input_html: { id: :btn_res }  %>
+                  <% end %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>

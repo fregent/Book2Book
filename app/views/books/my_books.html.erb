@@ -11,10 +11,10 @@
       <%= link_to book_path(book), class:"text-decoration-none" do %>
         <div class="card-category" data-aos="zoom-in", url(<%= asset_path('default-book.png') %>)>
           <div class="img-card d-flex align-items-center justify-content-center">
-            <%= image_tag book.picture_url, class: "img-fluid max-width-50px height-auto img-thumbnail my-5 mx-auto" %>
+            <%= image_tag book.picture_url, class: "img-fluid max-width: 200px height: auto img-thumbnail my-5" %>
           </div>
-            <h5><%= book.title %></h5>
-            <h6><%=book.reservation_price%>€ / Day</h6>
+          <h5><%= book.title %></h5>
+          <h6><%=book.reservation_price%>€ / Day</h6>
         </div>
       <% end %>
     </div>
