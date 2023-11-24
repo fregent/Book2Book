@@ -1,6 +1,9 @@
 <h1>Welcome to your Books!</h1>
 <h3>Here are your Books registered for rental:</h3>
 <br>
+<div class="d-flex align-items-center justify-content-between mb-3">
+    <%= link_to "Add a new book", new_book_path, class: "btn btn-primary rounded-pill" %>
+  </div>
 <br>
 <% @user_books.each do |book| %>
   <div class="co-12 col-sm-6 col-md-4 mb-3">

@@ -1,24 +1,22 @@
 <div class="cover mb-4 d-flex align-items-center justify-content-center">
   <div class="text-center container mt-3">
-    <h1>Books</h1>
-    <h5 class="typed-js" data-controller="typed-js">Search a book</h5>
+    <h1 class="title-index">This is all our books for rental</h1>
+    <h5 class="typed-js" data-controller="typed-js" id="search-book">Search a book</h5>
     <%= render "shared/searchbar" %>
     <div class="row">
       <div class="col mt-5">
         <% if @query %>
           <p>You searched for <strong><%= @query %></strong>. We found <%= @books.count %> books out of our <%= Book.count %> on our website.</p>
         <% else %>
-          <p>All <%= @book_counter %> books</p>
+          <p class=" book-count">All <%= @book_counter %> books</p>
         <% end %>
       </div>
     </div>
   </div>
 </div>
 
-<div class="container py-5">
-  <div class="d-flex align-items-center justify-content-between mb-3">
-    <%= link_to "Add a new book", new_book_path, class: "btn btn-primary rounded-pill" %>
-  </div>
+<div class="container py-3">
+
   <div class="row">
     <% @books.each do |book| %>
       <div class="col-12 col-sm-6 col-md-4 px-2 mb-3">
