@@ -16,9 +16,6 @@
 </div>
 
 <div class="container py-5">
-  <div class="d-flex align-items-center justify-content-between mb-3">
-    <%= link_to "Add a new book", new_book_path, class: "btn btn-primary rounded-pill" %>
-  </div>
   <div class="row">
     <% @books.each do |book| %>
       <div class="col-12 col-sm-6 col-md-4 px-2 mb-3">
